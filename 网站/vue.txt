@@ -1,0 +1,14 @@
+﻿vueX 简单介绍 
+https://segmentfault.com/a/1190000009404727
+
+axios 
+https://www.jianshu.com/p/df464b26ae58
+
+iview
+https://iview.github.io/components/input-number
+
+插件
+better-scroll       // http://ustbhuangyi.github.io/better-scroll
+vue-lazyload 懒加载   // http://blog.csdn.net/longzhoufeng/article/details/72726104
+JS创建CSS3动画  // https://github.com/HenrikJoreteg/create-keyframe-animation create-keyframe-animation
+http://blog.csdn.net/sunhangye/article/details/78731621

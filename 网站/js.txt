@@ -1,0 +1,11 @@
+JavaSciprt权威指南
+https://developer.mozilla.org/zh-CN/learn/javascript
+
+学习Javascript闭包   阮一峰
+http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+
+JavaScript Source Map 详解
+http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html
+
+JS兵器库
+https://segmentfault.com/a/1190000011966867

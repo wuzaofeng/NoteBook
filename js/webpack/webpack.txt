@@ -1,0 +1,44 @@
+WebPack和Grunt以及Gulp相比有什么特性
+其实Webpack和另外两个并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
+
+基本使用
+
+#entry file 入口文件
+#output file 输出文件
+#安装全局  webpack {entry file} {output file}   
+#非全局安装
+node_modules/.bin/webpack app/main.js public/bundle.js
+
+
+devtool（使调试更容易）上述选项由上到下打包速度越来越快
+参数
+  source-map 
+  cheap-module-source-map 
+  eval-source-map
+  cheap-module-eval-source-map
+
+小到中型的项目  eval-source-map是一个很好的选项 只应该开发阶段使用它
+大型项目  cheap-module-eval-source-map 考虑时间成本时使用。
+
+
+使用webpack构建本地服务器
+npm install --save-dev webpack-dev-server
+
+
+plugins: [
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      devServer: {
+        contentBase: "./public", //本地服务器所加载的页面所在的目录
+        colors: true, //终端中输出结果为彩色
+        historyApiFallback: true, //不跳转
+        inline: true //实时刷新
+      }
+    }
+  })
+]
+devserver的配置选项
+  contentBase
+  port #设置默认监听端口，如果省略，默认为8080
+  inline 设置为true，当源文件改变时会自动刷新页面
+  historyApiFallback 在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html

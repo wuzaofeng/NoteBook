@@ -1,0 +1,3 @@
+路由懒加载组件
+component: resolve => require(['../page/my/my.vue'], resolve),//懒加载
+

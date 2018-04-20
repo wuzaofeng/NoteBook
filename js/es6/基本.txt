@@ -1,0 +1,426 @@
+ES6强制开启严格模式
+
+一 let, const
+1.在严格模式下如果没有定义变量，是会报错
+2.使用const常量定义是不能修改的，并且一定要赋值
+3.如果用const常量为对象时候。里面的值是可以改变的。但定义的常量所指向的那个对象的指针是无法改变的
+
+例如
+const k= {
+  a:1
+}
+
+k = {
+  b:3
+}
+console.log(k)  //会报错 Assignment to constant variable;
+
+二 解构赋值
+数组解构赋值 
+对象解构赋值 
+{
+  let metaData = {
+    title:'abc',
+    test:[{title:'test',desc:'description'}]
+  }
+  let {title:esTitle,test:[{title:cnTitle}]} = metaData;
+  console.log(esTitle,cnTitle);  // abc , test
+}
+
+三 正则扩展
+1.获取修饰符regex.flags
+let regex = new RegExp(/xyz/ig,'i');
+第二个参数会代替前面的ig修饰符
+
+2.y修饰符与g修饰符
+都是全局匹配
+
+sticky  判断是否有开启y修饰符
+
+3.u修饰符  识别uncode编码
+
+4.如果.或者大于两个字节的字符需要加个u修饰符才能匹配到
+例如
+console.log(/啊{2}/.test('啊啊'))   false
+console.log(/啊{2}/u.test('啊啊'))  true
+
+
+三 字符串拓展
+es5的时候占两位字节的字符汉字处理不到位的
+但在es6时候 汉字使用
+     es5                          es6
+chartAt(chartCodeAt)        codePointAt()  字符取出码值
+fromCharCode()              fromCodePoint()  显示出字符
+{
+  let str  = "\u{20bb7}abc"
+  for(let i=0;i<str.length;i++){
+    console.log('es5',str[i])  //乱码  乱码 abc
+  }
+
+  for(let code of str){
+    console.log('es6',code)   // 吉 abc
+  }
+
+拓展方法 
+  判断字符串是否包含str字符串         includes('str')
+  判断字符串是否以str字符为起始位置   startsWith('str')
+  判断字符串是否以str字符为结束位置   endsWith('str')
+
+  重复字符串         str.repeat(2)  //重复两次
+  向前补白           str.padStart(2,'0')
+  向后补白           str.padEnd(2,'0')
+}
+
+标签模板
+1.防止XXS攻击
+2.可以用多语言 ，通过return 结果改变
+abc`i an ${user.name},${user.info}`
+function　abc(s,v1,v2){
+  return s+v1+v2
+}
+
+四 数值扩展
+二进制开头用`0b开头` 小写大写都可以 如：0不111110111 =》转成10进制
+八进制开头用`0o` 小写大写都可以 
+
+Number.isFinite(num)   判断是不是数字     NaN => false
+Number.isNaN(num)      
+
+Number.isInterger(num) 判断是否整型
+Number.isSafeInterger(num) 判断是否整型
+
+Math.trunc(num) 向下取整
+Math.sign(num)  负数为-1 0=>0 正数为1  不是数的话为NaN
+
+Math.cbrt(-1) 立方根
+
+伍 数组扩展
+Array.of() 一组数据类型转成数组
+Array.from()  集合转成数组
+Array.map()   映射
+Array.fill()  填充
+
+Array.keys()     兼容问题
+Array.values()   兼容问题
+Array.entries()  无兼容问题
+
+Array.find()   查找数组   只找到第一个
+Array.findIndex()   查找数组 只找到第一个 返回下标
+
+Array.includes() 看看是否包括
+
+陆 函数扩展
+1.参数默认值  //参数加默认值必须加在后面
+2.rest参数 ...arg 之后不能再加参数了
+3.扩展运算符   ...[1,2,3]
+4.箭头函数
+5.this绑定
+6.尾调用
+
+对象扩展
+Object.is()  判断两个对象是不是相等  与 === 一样
+
+拷贝  assign()浅复制  1.拷贝的属性有限制 2.拷贝只有自身对象的属性。继承那些对象不会拷贝过去
+
+entries() 循环
+例如
+for(let [key,value] of Object.entries(test)){
+  console.log([key,value]);
+}
+
+
+柒 Symbol数据类型
+{
+  // 声明
+  let a1=Symbol();
+  let a2=Symbol();
+  console.log(a1===a2);  // false
+  let a3=Symbol.for('a3');
+  let a4=Symbol.for('a3');
+  console.log(a3===a4);
+}
+
+{
+  let a1=Symbol.for('abc');
+  let obj={
+    [a1]:'123',
+    'abc':345,
+    'c':456
+  };
+  console.log('obj',obj);
+
+  for(let [key,value] of Object.entries(obj)){ //获取不到
+    console.log('let of',key,value);
+  }
+
+  Object.getOwnPropertySymbols(obj).forEach(function(item){
+    console.log(obj[item]);
+  })
+
+  Reflect.ownKeys(obj).forEach(function(item){
+    console.log('ownkeys',item,obj[item]);
+  })
+}
+
+捌 数据结构Set WeakSet  Map
+Set 类似与数组 Set里面的元素必须是唯一的   可以利用Set去重,去重时需要数据类型一致
+Map 类似与对象 但对象的Key值必须是字符串，但Map不一定是
+
+Set与WeakSet区别，Map与WeakMap区别
+WeakSet只能放对象,WeakMap的key一定是对象
+
+{
+  let arr=[1,2,3,1,'2'];
+  let list2=new Set(arr);
+
+  console.log('unique',list2); // 1,2,3,"2"
+}
+
+Set,Map属性
+size
+
+Set方法
+add()
+has()
+delete()
+clear()
+
+遍历
+{
+  let arr=['add','delete','clear','has'];
+  let list=new Set(arr);
+
+  for(let key of list.keys()){
+    console.log('keys',key);
+  }
+  for(let value of list.values()){
+    console.log('value',value);
+  }
+  for(let [key,value] of list.entries()){
+    console.log('entries',key,value);
+  }
+
+  list.forEach(function(item){console.log(item);})
+}
+
+
+Map方法
+set()
+has()
+delete()
+clear()
+
+
+Map,Set,{},[]
+能使用Map,如果保证数据唯一性用Set,少用{},[]
+
+
+玖 Proxy 代理 和Reflect 反射
+通过代理来拦截数据。
+可以通过Proxy做数据校验
+
+
+拾 Promise 异步操作
+{
+  let ajax=function(){
+    console.log('执行3');
+    return new Promise(function(resolve,reject){
+      setTimeout(function () {
+        resolve()
+      }, 1000);
+    })
+  };
+
+  ajax()
+    .then(function(){
+    return new Promise(function(resolve,reject){
+      setTimeout(function () {
+        resolve()
+      }, 2000);
+    });
+  })
+    .then(function(){
+    console.log('timeout3');
+  })
+}
+
+{
+  let ajax=function(num){
+    console.log('执行4');
+    return new Promise(function(resolve,reject){
+      if(num>5){
+        resolve()
+      }else{
+        throw new Error('出错了')
+      }
+    })
+  }
+
+  ajax(6).then(function(){
+    console.log('log',6);  // log 6
+  }).catch(function(err){
+    console.log('catch',err);
+  });
+
+  ajax(3).then(function(){
+    console.log('log',3);
+  }).catch(function(err){
+    console.log('catch',err);// 出错了
+  });
+}
+
+
+拾壹 Iterator 和 for...of 循环  可以自定义循环条件
+返回对象，要有next() =>  value 和 done
+// 自定义
+{
+
+  let obj={
+    start:[1,3,2],
+    end:[7,9,8],
+    [Symbol.iterator](){   //等同于"Symbol.iterator":function(){}
+      let self=this;
+      let index=0;
+      let arr=self.start.concat(self.end);
+      let len=arr.length;
+      return {
+        next(){
+          if(index<len){
+            return {
+              value:arr[index++],
+              done:false
+            }
+          }else{
+            return {
+              value:arr[index++],
+              done:true
+            }
+          }
+        }
+      }
+    }
+  }
+  // 调用
+  for(let key of obj){
+    console.log(key);
+  }
+}
+
+
+拾贰 Generator 数据类型  函数
+可以在执行过程中多次返回
+*,yield 与 async,await一样
+{
+  // genertaor基本定义
+  let tell=function* (){
+    yield 'a';
+    yield 'b';
+    return 'c'
+  };
+
+  let k=tell();
+
+  console.log(k.next());// { value: 'a', done: false }
+  console.log(k.next());// { value: 'b', done: false }
+  console.log(k.next());// { value: 'c', done: true }
+  console.log(k.next());// { value: undefined, done: true }
+}
+
+{
+  let state=function* (){
+    while(1){
+      yield 'A';
+      yield 'B';
+      yield 'C';
+    }
+  }
+  let status=state();
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+}
+
+// {
+//   let state=async function (){
+//     while(1){
+//       await 'A';
+//       await 'B';
+//       await 'C';
+//     }
+//   }
+//   let status=state();
+//   console.log(status.next());
+//   console.log(status.next());
+//   console.log(status.next());
+//   console.log(status.next());
+//   console.log(status.next());
+// }
+
+用法。例如抽奖。求出剩余次数
+放在全局变量是不安全的。可以随时被修改，而且会影响到性能
+{
+  let draw = function(count){
+    // 具体抽奖逻辑 忽略
+    console.info(`剩余${count}次数`)
+  }
+
+  let residue = function*(count){
+    // 次数限制
+    while(count>0){
+      count--;
+      // 执行抽奖逻辑
+      yield draw(count);
+    }
+  }
+
+  let star = residue(5)
+  let btn = document.createElement('button');
+  btn.id = 'start';
+  btn.textContent = '抽奖'
+  document.body.appendChild(btn);
+  document.getElementById('start').addEventListener('click',function(){
+    star.next();
+  },false)
+
+}
+
+{
+  //长轮询
+  let ajax = function* () {
+    yield new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        resolve({ code: 0 })
+      }, 200)
+    })
+
+    let pull = function () {
+      let genertaor = ajax();
+      let step = genertaor.next();
+      step.value.then(function (d) {
+        if (d.code != 0) {
+         setTimeout(() => {
+           console.log('wait')
+           pull()
+         }, 1000);
+        }else{
+          console.log(d)
+        }
+      })
+    }
+
+    pull()
+  }
+}
+
+拾叁 Decorator 修饰器 // 第三方修饰器Js  core-decorators
+需要安装 babel-plugin-transform-dectators-legacy
+1.是个函数
+2.用于修改类的行为。扩展类的功能
+3.只能用于类
+
+可以在类的里面，也可以在外面但必须在类的前面
+
+
+模块化单一。就是只实现一个功能

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <select name="" lay-filter="agentAddress1" id="agentAddress1"></select>
+  <select name="" lay-filter="agentAddress2" id="agentAddress2"></select>
+  <select name="" lay-filter="agentAddress3" id="agentAddress3"></select>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./city-selector.js"></script>
+  <script>
+    var mapSelector2 = MapSelector.createNew();
+    mapSelector2.init("agentAddress1", "agentAddress2", "agentAddress3");
+    mapSelector2.setType(MapSelector.type.City);
+    //   type: { Province: 0, City: 1, Region: 2 },
+  </script>
+</body>
+
+</html>

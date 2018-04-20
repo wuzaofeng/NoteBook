@@ -1,0 +1,7 @@
+所有当前目录下的.js文件转换成.ts文件  ren 
+D:\www\suduku2\src\js\core>ren *.js *.ts
+
+所有当前目录下的.js文件删除  del
+D:\www\suduku2\src\js\core>del *.js
+
+清除屏幕 cls

@@ -1,0 +1,89 @@
+例子一：
+ES5
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.toString = function () {
+  return '(' + this.x + ', ' + this.y + ')';
+};
+
+var p = new Point(1, 2);
+
+//定义类
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  toString() {
+    return '(' + this.x + ', ' + this.y + ')';
+  }
+}
+
+上面代码定义了一个类 
+constructor方法是所谓的构造函数,定义"类"的方法的时候不需要加function关键字，也不需要加逗号
+类的数据类型就是函数，类的数据类型就是函数。
+
+类的内部所有定义的方法，都是不可枚举的
+ES5写法是可枚举的
+
+constructor方法默认返回实例对象（即this）
+
+{
+  // 继承传递参数
+  class Parent{
+    constructor(name='mukewang'){
+      this.name=name;
+    }
+  }
+
+  class Child extends Parent{
+    constructor(name='child'){
+      super(name);
+      this.type='child';
+    }
+  }
+
+  console.log('继承传递参数',new Child('hello'));
+}
+
+使用super()实现父类继承，要定义属于自己子类的属性。需要放在super()之后
+get set是属性。不是方法
+
+在方法前面加static为静态方法。是通过类去调用。不是通过类的实例去调用
+同理静态属性也一样。
+{
+  // 静态方法
+  class Parent{
+    constructor(name='mukewang'){
+      this.name=name;
+    }
+    static tell(){
+      console.log('tell');
+    }
+  }
+  Parent.tell();
+}
+
+{
+  // 静态属性
+  class Parent{
+    constructor(name='mukewang'){
+      this.name=name;
+    }
+
+    static tell(){
+      console.log('tell');
+    }
+  }
+
+  // 如果要定义，可以如下定义
+  Parent.type='test';
+  console.log('静态属性',Parent.type);
+}
+
+
+

@@ -1,0 +1,9 @@
+主页：http://www.typescriptlang.org
+https://www.tslang.cn/index.html
+
+API文档：https://www.gitbook.com/book/zhongsp/typescript-handbook/details
+
+特点
+  静态类型： 接口,类,泛型,枚举,类型推导
+  模块：ES6模块,命名空间
+  编译：.ts --[tsc(TtypeScript)] ----> .js

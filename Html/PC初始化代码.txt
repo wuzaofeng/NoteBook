@@ -1,0 +1,66 @@
+body {
+	font-family: "Î¢ÈíÑÅºÚ", "Arial";
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+	color: #464646;
+	background: #f7f7f7;
+}
+h1, h2, h3, h4, h5 {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+ul, li, dl, dt, dd, p {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	color: #0096df;
+}
+img {
+	border: 0;
+	vertical-align: middle;
+}
+em, i {
+	font-style: normal;
+}
+input {
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+button {
+	border: none;
+	cursor: pointer;
+}
+label {
+	vertical-align: middle;
+}
+select {
+	vertical-align: middle;
+}
+textarea {
+	outline: none;
+	resize: none;
+}
+.clear:before {
+	content: "";
+	display: table;
+}
+.clear:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+.clear {
+	zoom: 1;
+}

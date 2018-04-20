@@ -1,0 +1,8 @@
+﻿ECMAScript 6 入门 阮一峰
+http://es6.ruanyifeng.com/#docs/destructuring
+
+
+http://wiki.jikexueyuan.com/project/es6/author.html
+
+babel
+https://babeljs.cn/

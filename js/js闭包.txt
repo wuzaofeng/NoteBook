@@ -1,0 +1,132 @@
+（function(){
+var _userId = 234;
+var _typeId = "item"
+var export2 = {}
+
+function converter(userId){
+   return userId
+}
+
+
+export2.getUserId = function(){
+return converter(_userId)
+}
+export2.getTypeId = function(){
+return _typeId 
+}
+window.export2 = export2
+}）()
+
+
+
+export.getUserId ()   //234
+export.getTypeId () // item
+
+
+export._userId //undefined
+export._typeId //undefined
+export.converter //undefined
+
+
+
+<----------------学习Javascript闭包--------------->
+http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+闭包就是能够读取其他函数内部变量的函数
+
+一.先了解作用域，JS里面作用域有分全局作用域和局部作用域，
+  1.当你定义了一个全局变量，函数内部能访问到这个全局变量。
+  2.但如果在函数内部定义个局部变量。则外部不能访问到这个局部变量。
+  3.如果在局部变量没有写var,会默认定义了一个全局变量
+
+
+二.链式作用域就是一个函数f1包含另一个函数f2,f1定义的所有变量,f2能访问到,但f2定义的变量，f1是访问不到的。既然f2函数能获取到f1变量n的值，那作为一个返回值，外部就能访问到n的值了
+
+function f1(){
+　　var n=999;
+　　function f2(){
+　　　alert(n); 
+　　}
+　　　return f2;
+}
+var result=f1(); // function f2(){  alert(n);　}
+result(); // 999
+
+三.用途
+  1.读取函数内部的变量
+  2.将这些变量保持在内存中
+
+
+如何把变量保持在内存中？
+例如
+var nAdd;
+
+function f1() {
+  
+  var n = 999;
+  
+nAdd = function () {
+
+    n += 1
+  
+}
+
+  
+function f2() {
+ 
+   console.log(n)
+  
+}
+
+  
+return f2;
+
+}
+
+
+
+var result = f1()
+
+result(); //999
+nAdd();
+
+result(); //1000
+
+result就是闭包f2函数被调用的两次。一次999，另一次为1000。这就证明了变量n为何一直保存在内存中
+
+因为f1是f2的父类。f2又被赋给一个全局变量result.导致f2一直存在内存中。但f2依赖于f1.因此f1也一直在内存中。
+
+
+
+例如
+var name = "The Window";
+　
+　var object = {
+  
+	name: "My Object",
+  
+	getNameFunc: function () {
+    
+	return function () {
+      
+		return this.name;
+    
+	};
+  },
+  
+	getName: function () {
+   
+		return this.name;
+  
+	}
+　　
+	};
+
+	console.log(object.getNameFunc()());
+	//The Window
+	     
+	console.log(object.getName());
+	//My Object
+
+
+
+

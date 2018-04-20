@@ -1,0 +1,28 @@
+﻿vscode快捷键
+http://blog.csdn.net/p358278505/article/details/74221214
+https://www.cnblogs.com/bindong/p/6045957.html
+
+
+
+基础编辑 Basic editing
+Alt+ ↑ / ↓          向上/向下移动行 Move line up/down
+Shift+Alt + ↓ / ↑   向上/向下复制行 Copy line up/down
+Ctrl+Shift+K	删除行 Delete line
+Alt+PgUp / PgDown	向上/向下滚动页面 Scroll page up/down
+Ctrl+K Ctrl+C	添加行注释 Add line comment
+Ctrl+K Ctrl+U	删除行注释 Remove line comment
+Ctrl+/	切换行注释 Toggle line comment
+Shift+Alt+A	切换块注释 Toggle block comment
+Alt+Z	切换换行 Toggle word wrap
+
+
+导航 Navigation
+Ctrl + P	转到文件... Go to File...
+Ctrl + Shift + O	转到符号... Go to Symbol...
+
+
+编辑器与窗口管理
+文件之间切换 Ctrl+Tab
+
+vscode插件
+https://segmentfault.com/a/1190000011779959 

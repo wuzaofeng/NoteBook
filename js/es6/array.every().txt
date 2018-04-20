@@ -1,0 +1,16 @@
+array.prototype.every
+检查数组每一个值是否为true,如果都为true,返回true否则为false
+
+参考网站
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+例如
+下例检测数组中的所有元素是否都大于 10。
+function isBigEnough(element, index, array) {
+  return (element >= 10);
+}
+var passed = [12, 5, 8, 130, 44].every(isBigEnough);
+// passed is false
+passed = [12, 54, 18, 130, 44].every(isBigEnough);
+// passed is true
+

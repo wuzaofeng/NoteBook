@@ -1,0 +1,17 @@
+继承
+不兼容ES5时候使用  IE9一下版本
+if(!Object.create){
+Object.create = function(proto){
+function F(){}
+F.prototype = proto
+return new F
+}
+
+IE9+
+Student.prototype = Object.create(Person.prototype);
+
+方法
+  function inherit(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+  }

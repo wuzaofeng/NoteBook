@@ -1,0 +1,8 @@
+﻿React学习资源汇总
+http://www.iphone3d.cn/thread-81.htm
+
+从零搭建React全家桶框架教程
+https://github.com/brickspert/blog/issues/1#intro
+
+react-router
+http://reacttraining.cn/web/guides/quick-start
