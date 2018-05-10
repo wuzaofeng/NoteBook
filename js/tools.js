@@ -634,6 +634,22 @@ function stringfyQueryString(obj) {
   return pairs.join('&');
 }
 
+/**
+ * form-data格式化
+ * @param {*} data 请求body
+ */
+export function formDateTransfrom(data) {
+  // return Object.keys(data).map(e => `${e}=${data[e]}`).join('&');
+  return Object.keys(data).map((e) => {
+    // 多层嵌套
+    if (Array.isArray(data[e])) {
+      return `${e}=${JSON.stringify(data[e])}`;
+    }
+    return `${e}=${data[e]}`;
+  }).join('&');
+}
+
+
 
 // Function
 /**
