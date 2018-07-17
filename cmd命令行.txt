@@ -1,7 +1,13 @@
-所有当前目录下的.js文件转换成.ts文件  ren 
+所有当前目录下的.js文件转换成.ts文件  ren
 D:\www\suduku2\src\js\core>ren *.js *.ts
 
 所有当前目录下的.js文件删除  del
 D:\www\suduku2\src\js\core>del *.js
 
-清除屏幕 cls
+清除屏幕 cls   window
+        clear mac
+
+
+ssh root@192.168.1.23
+scp -r /Volumes/d/project/Option-APP/dist  root@192.168.1.23:/data/option/tomcat/webapps
+rm -rf  删除
